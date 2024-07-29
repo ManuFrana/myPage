@@ -1,3 +1,65 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const tickers = document.querySelectorAll(".tick");
+  const tickerWrapper = document.querySelector(".tickers");
+  const services = document.querySelector(".services-content-item");
+  observer.observe(tickerWrapper);
+  observer.observe(services);
+});
+
+const toServicios = document.getElementById("toServicios");
+
+toServicios.addEventListener("click", (e) => {
+  let servicios = document.querySelector("#servicios");
+  servicios.scrollIntoView({
+    behavior: 'smooth'
+});
+})
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      if (entry.target.className.includes('services-content-item')) {
+        revealElements('.services-content-item', 500, 250);
+      } else {
+        startTickerAfterSomeMsSecconds(500)
+      }
+      
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1 // Activar cuando el 10% del element esta en la view
+});
+
+
+async function startTickerAfterSomeMsSecconds(ms) {
+  await new Promise(r => setTimeout(r, ms));
+  animateTicker(document.querySelectorAll(".tick"));
+}
+
+async function animateTicker(tickers) {
+  let speed = 150;
+  tickers.forEach(tickers => {
+    const animate = () => {
+      const value = +tickers.getAttribute('finish');
+      const data = +tickers.innerText;
+
+      const time = value / speed;
+      if (data < value) {
+        tickers.innerText = Math.ceil(data + time);
+        setTimeout(animate, 15);
+      } else {
+        tickers.innerText = value + "+";
+      }
+    }
+    animate();
+  });
+}
+
+
+
 function revealElements(selector, delay = 0, interval = 0) {
   const elements = document.querySelectorAll(selector);
   elements.forEach((element, index) => {
@@ -20,8 +82,6 @@ function startAnimationShow() {
   revealElements('.container__right p', 750);
   revealElements('.container__right .img-main-1', 625, 500);
   revealElements('.container__right .img-main-2', 750, 500);
-  //revealElements('.ratings .ticker-element', 100, 500);
-  //revealElements('.services-content-item', 1000, 500);
   if (window.innerWidth < 500) {
     revealElements('.socials span', 0, 100);
   } else {
@@ -66,9 +126,3 @@ window.addEventListener("mainpage-content-hide", function () {
   hide();
   document.querySelector("nav").style.opacity = 0;
 })
-
-ScrollReveal().reveal(".services-content-item", {
-  ...scrollRevealOption,
-  delay: 1000,
-  interval: 500
-});
