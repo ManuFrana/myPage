@@ -91,6 +91,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   background-color: var(--text-dark);
+  position: absolute;
 }
 
 .nav__logo a {
@@ -107,7 +108,7 @@ nav {
 
 .nav__links {
   position: absolute;
-  top: 60px;
+  top: 29px;
   left: 0;
   width: 100%;
   padding: 2rem;
@@ -448,9 +449,6 @@ nav {
   margin-top: 2rem;
 }
 
-section {
-  margin-top: 2rem;
-}
 
 @media (width < 600px) {
 
@@ -526,6 +524,7 @@ section {
   .nav__header {
     flex: 1;
     padding: 0;
+    /*background-color: transparent;*/
     background-color: transparent;
   }
 

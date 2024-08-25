@@ -2,10 +2,6 @@ const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
 
-window.onload = function () {
-  window.scrollTo(0, 0);
-};
-
 menuBtn.addEventListener("click", (e) => {
   navLinks.classList.toggle("open");
 

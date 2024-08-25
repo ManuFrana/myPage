@@ -70,6 +70,20 @@ html {
   scroll-behavior: smooth;
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5dvh;
+  width: 100dvw;
+  background-color: #212121;
+}
+
+.footer-text {
+  color: #4d4b4b;
+  font-size: 10px;
+}
+
 #servicios {
   min-width: 1px;
   min-height: 1px;
@@ -157,16 +171,8 @@ nav {
   color: var(--primary-color);
 }
 
-.nav__links a:hover {
-  font-size: 20;
-}
-
 .nav__btns {
   display: none;
-}
-
-.nav-links-text:hover {
-  color:white;
 }
 
 .main-background-image {
@@ -244,6 +250,7 @@ nav {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding-bottom: 2rem;
 }
 
 .services-title-bar {
@@ -355,33 +362,6 @@ nav {
   line-height: 1.75rem;
   color: var(--text-dark);
 }
-
-/*
-.location {
-  position: absolute;
-  left: 1rem;
-  bottom: 1rem;
-  padding: 1rem 2rem 1rem 1rem;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-dark);
-  background-color: var(--primary-color);
-  border: 10px solid var(--white);
-  border-bottom: none;
-}
-
-.location span {
-  padding: 5px 10px;
-  font-size: 1.5rem;
-  color: var(--text-dark);
-  background-color: var(--white);
-  border-radius: 10px;
-}
-*/
 
 .socials {
   text-align: center;

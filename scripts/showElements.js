@@ -1,29 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const tickers = document.querySelectorAll(".tick");
-  const tickerWrapper = document.querySelector(".tickers");
-  const services = document.querySelector(".services-content-item");
-  observer.observe(tickerWrapper);
-  observer.observe(services);
-});
-
-const toServicios = document.getElementById("toServicios");
-
-toServicios.addEventListener("click", (e) => {
-  let servicios = document.querySelector("#servicios");
-  servicios.scrollIntoView({
-    behavior: 'smooth'
-});
-})
-
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      if (entry.target.className.includes('services-content-item')) {
-        revealElements('.services-content-item', 500, 250);
-      } else {
-        startTickerAfterSomeMsSecconds(500)
-      }
-      
+      animateObservedElement(entry.target.className);
       observer.unobserve(entry.target);
     }
   });
@@ -32,6 +10,42 @@ const observer = new IntersectionObserver((entries, observer) => {
   rootMargin: '0px',
   threshold: 0.1 // Activar cuando el 10% del element esta en la view
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  window.scrollTo(0, 0);
+  const tickers = document.querySelectorAll(".tick");
+  const tickerWrapper = document.querySelector(".tickers");
+  const callToAction = document.querySelector(".callToAction");
+  const faq = document.querySelector(".faq-title");
+  observer.observe(tickerWrapper);
+  observer.observe(faq);
+  observer.observe(callToAction);
+});
+
+const toServicios = document.getElementById("toServicios");
+const faqDetails = document.querySelectorAll("details");
+faqDetails.forEach(item => {
+  item.addEventListener('toggle', () => {
+    if (item.open) {
+      item.scrollIntoView({ behavior: "smooth", block:"start" });
+    }
+  });
+});
+
+toServicios.addEventListener("click", (e) => {
+  let servicios = document.querySelector("#servicios-loop");
+  servicios.scrollIntoView({
+    behavior: 'smooth'
+  });
+})
+
+toServicios.addEventListener("click", (e) => {
+  let servicios = document.querySelector("#servicios-loop");
+  servicios.scrollIntoView({
+    behavior: 'smooth'
+  });
+})
 
 
 async function startTickerAfterSomeMsSecconds(ms) {
@@ -58,11 +72,9 @@ async function animateTicker(tickers) {
   });
 }
 
-
-
-function revealElements(selector, delay = 0, interval = 0) {
+async function revealElements(selector, delay = 0, interval = 0) {
   const elements = document.querySelectorAll(selector);
-  elements.forEach((element, index) => {
+  await elements.forEach((element, index) => {
     setTimeout(() => {
       element.classList.remove('hidden');
       element.classList.add('visible');
@@ -113,8 +125,8 @@ function hide() {
   } else {
     hideElements('.socials span');
   }
+  hideElements('details')
 }
-
 
 window.addEventListener('startAnimationShow', function () {
   document.querySelector(".showAfterZoom").style.opacity = 1;
@@ -126,3 +138,32 @@ window.addEventListener("mainpage-content-hide", function () {
   hide();
   document.querySelector("nav").style.opacity = 0;
 })
+
+async function addTypeWritterEffect(selector, delay = 0, interval = 0) {
+  const elements = document.querySelectorAll(selector);
+  await elements.forEach((element, index) => {
+    setTimeout(() => {
+      element.classList.add('typewritter');
+    }, delay + index * interval);
+  });
+}
+
+function animateObservedElement(className) {
+  switch (className) {
+    case 'tickers':
+      startTickerAfterSomeMsSecconds(500);
+      break;
+    case 'faq-title':
+      revealElements('details', 150, 300);
+      break;
+    case 'callToAction':
+      revealElements('.callToActionWrapper', 100, 300);
+      revealElements('.main-text-title', 1800, 300);
+      addTypeWritterEffect('.main-text-title', 1800, 300);
+      revealElements('.main-text-desc', 3300, 500);
+      revealElements('.card', 4800, 600);
+      break;
+    default:
+      break;
+  }
+}
