@@ -1,10 +1,15 @@
-console.clear();
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 
 let showContent = false;
 let mainImage = document.querySelector(".zoom-image-container");
+
+let defaultZoom = 370;
+if (window.innerWidth < 500) {
+    defaultZoom = 230;
+}
 
 
 window.addEventListener("load", () => {
@@ -32,7 +37,7 @@ window.addEventListener("load", () => {
         })
         .to(".zoom-in-image", {
             scale: 2,
-            z: 370,
+            z: defaultZoom,
             transformOrigin: "center center",
             ease: "power1.inOut",
         })

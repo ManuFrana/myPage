@@ -2,7 +2,6 @@ const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
 
-
 window.addEventListener('mainpage-content-shown', function () {
   let mainContent = document.querySelector(".showAfterZoom");
   mainContent.style.opacity = 1;
@@ -18,19 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const tickerWrapper = document.querySelector(".tickers");
   observer.observe(tickerWrapper);
   dispatchShowContentEvent();
-});
-
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      startTickerAfterSomeMsSecconds(500)
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  root: null, // Use the document's viewport as the container
-  rootMargin: '0px',
-  threshold: 0.1 // Trigger when 10% of the element is in view
 });
 
 
