@@ -14,9 +14,8 @@
     background: #212121;
     box-shadow: 15px 15px 30px rgb(25, 25, 25),
         -15px -15px 30px rgb(60, 60, 60);
-    padding: 0 2rem;
+    padding: 2rem 2rem;
     width: 90%;
-    height: calc(1.5 * 276px);
 }
 
 .main-text-desc {
@@ -251,11 +250,13 @@
 @media (width < 600px) {
     .callToActionWrapper {
         flex-direction: column;
-        height: 70dvh;
+        justify-content: space-evenly;
+        gap: 2rem;
+        width: 95%;
     }
 
     .titleCallToAction {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .typewritter .titleCallToAction { 
