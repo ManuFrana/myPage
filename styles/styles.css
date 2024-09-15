@@ -162,6 +162,10 @@ nav {
   transform: translateY(-100%);
 }
 
+.nav__links:hover {
+  cursor: pointer;
+}
+
 .nav__links.open {
   transform: translateY(0);
 }
