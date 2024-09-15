@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const toServicios = document.getElementById("toServicios");
 const faqDetails = document.querySelectorAll("details");
+
 faqDetails.forEach(item => {
   item.addEventListener('toggle', () => {
     if (item.open) {
@@ -32,21 +33,6 @@ faqDetails.forEach(item => {
     }
   });
 });
-
-toServicios.addEventListener("click", (e) => {
-  let servicios = document.querySelector("#servicios-loop");
-  servicios.scrollIntoView({
-    behavior: 'smooth'
-  });
-})
-
-toServicios.addEventListener("click", (e) => {
-  let servicios = document.querySelector("#servicios-loop");
-  servicios.scrollIntoView({
-    behavior: 'smooth'
-  });
-})
-
 
 async function startTickerAfterSomeMsSecconds(ms) {
   await new Promise(r => setTimeout(r, ms));
@@ -166,4 +152,12 @@ function animateObservedElement(className) {
     default:
       break;
   }
+}
+
+async function scrollToElement(elementId) {
+  let element = await document.getElementById(elementId);
+  window.scrollTo({
+    top: element.getBoundingClientRect().top + window.scrollY, 
+    behavior: 'smooth'
+  });
 }

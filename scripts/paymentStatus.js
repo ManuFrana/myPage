@@ -20,6 +20,6 @@ async function fetchPaymentStatus() {
 
 async function contentBlocker(data) {
     if (data.status === "block") {
-        window.location.replace("notfound/notfound.html ");
+        window.location.replace("public/404.html ");
     }
 }
