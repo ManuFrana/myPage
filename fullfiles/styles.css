@@ -584,6 +584,11 @@ a {
 
 /* TICKERS */
 
+.ratings {
+  background-color: #0e100f;
+  padding-bottom: 2rem;
+}
+
 .ticker-number-and-text {
   display: flex;
   flex-direction: column;
@@ -609,6 +614,7 @@ a {
 .tick {
   font-size: 64px;
   font-weight: bold;
+  color: white;
 }
 
 .ticker-wrapper {
@@ -624,6 +630,7 @@ a {
 
 .ticker-text {
   font-weight: 500;
+  color: white;
 }
 
 .separator {
@@ -680,7 +687,6 @@ a {
   color: var(--white);
   width: 100%;
   padding-bottom: 1rem;
-  margin-top: 2rem;
 }
 
 .services-title-bar {
@@ -979,7 +985,7 @@ summary:hover {
 
 .front,
 .back {
-  background-color: rgba(107,49,82,0.5);
+  background-color: rgba(107,49,82,1);
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1101,7 +1107,7 @@ summary:hover {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  background-color: rgba(108, 52, 84, 0.9);
+  background-color: rgba(108, 52, 84, 1);
 }
 
 @keyframes floating {
