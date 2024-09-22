@@ -131,11 +131,6 @@ body {
   overflow-x: hidden;
 }
 
-.zoom-content .section {
-  width: 100%;
-  height: 100dvh;
-}
-
 .zoom-content .section.first-content {
   background-image: url(https://media.cntraveler.com/photos/661541f774d4d384aa33df01/16:9/w_2560%2Cc_limit/dolomites-GettyImages-155382713.jpeg);
   background-position: center center;
@@ -579,6 +574,11 @@ a {
     text-align: left;
     max-width: 400px;
     margin-inline-start: unset;
+  }
+
+  .zoom-content .section {
+    width: 100%;
+    height: 100dvh;
   }
 }
 
