@@ -132,7 +132,7 @@ body {
 }
 
 .zoom-content .section.first-content {
-  background-image: url(https://media.cntraveler.com/photos/661541f774d4d384aa33df01/16:9/w_2560%2Cc_limit/dolomites-GettyImages-155382713.jpeg);
+  background-image: url("../assets/dolomites.webp");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
